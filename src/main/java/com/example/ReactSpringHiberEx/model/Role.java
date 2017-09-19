@@ -5,6 +5,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.util.Set;
 
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 @Data
 @Entity
 public class Role {

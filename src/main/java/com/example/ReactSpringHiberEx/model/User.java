@@ -1,23 +1,21 @@
 package com.example.ReactSpringHiberEx.model;
 
 import lombok.Data;
-import javax.persistence.Id;
-
 import javax.persistence.*;
 
-
+@SuppressWarnings({"FieldCanBeLocal", "unused"})
 @Data
 @Entity
 public class User {
     private @Id @GeneratedValue int id;
-    private @Column(name = "login", nullable = false) String login;
+    private @Column(nullable = false) String login;
     private String name;
-    private @ManyToOne(fetch = FetchType.LAZY)  @JoinColumn(name = "idRole", nullable = false) Role idRole;
+    private @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "idRole", nullable = false) Role role;
 
-    public User(String login, String name, Role idRole) {
+    public User(String login, String name, Role role) {
         this.login = login;
         this.name = name;
-        this.idRole = idRole;
+        this.role = role;
     }
 
     public User() {

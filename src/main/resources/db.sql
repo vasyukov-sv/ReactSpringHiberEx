@@ -31,8 +31,8 @@ INSERT INTO `role` (`id`, `name`) VALUES
 	(3, 'Audit');
 /*!40000 ALTER TABLE `role` ENABLE KEYS */;
 
--- Дамп структуры для таблица usersexample.users
-CREATE TABLE IF NOT EXISTS `users` (
+-- Дамп структуры для таблица usersexample.user
+CREATE TABLE IF NOT EXISTS `user` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `login` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
@@ -40,14 +40,14 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы usersexample.users: 3 rows
-DELETE FROM `users`;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` (`id`, `login`, `name`, `idRole`) VALUES
+-- Дамп данных таблицы usersexample.user: 3 rows
+DELETE FROM `user`;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`id`, `login`, `name`, `idRole`) VALUES
 	(1, 'john', 'John Doe', 1),
 	(2, 'blackstar', 'Kevin Smith', 2),
 	(3, 'original', 'Tomas Hard', 3);
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
