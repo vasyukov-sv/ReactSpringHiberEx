@@ -1,20 +1,30 @@
 package com.example.ReactSpringHiberEx.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-@SuppressWarnings({"FieldCanBeLocal", "unused"})
-@Data
-@Entity
+@Getter
+@Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
+@ToString(exclude = "role")
+@Entity
 public class User {
-    private @Id @GeneratedValue int id;
-    @NonNull private @Column(nullable = false) String login;
-    @NonNull private String name;
-    @NonNull private @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "idRole", nullable = false) Role role;
+    @Id
+    @GeneratedValue
+    private int id;
+
+    @NonNull
+    private String login;
+
+    @NonNull
+    private String name;
+
+    @NonNull
+    @ManyToOne
+    private Role role;
 }

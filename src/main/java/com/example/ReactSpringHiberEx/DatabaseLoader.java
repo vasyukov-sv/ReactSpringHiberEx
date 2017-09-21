@@ -43,10 +43,10 @@ public class DatabaseLoader implements CommandLineRunner {
         }};
         roleAdmin.setUsers(admins);
 
-//        roleRepository.save(new HashSet<Role>() {{
-//            add(roleUser);
-//            add(roleAdmin);
-//        }});
+        roleRepository.save(new HashSet<Role>() {{
+            add(roleUser);
+            add(roleAdmin);
+        }});
 
         // fetch all categories
         for (Role role : roleRepository.findAll()) {

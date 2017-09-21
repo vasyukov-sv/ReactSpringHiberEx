@@ -36,14 +36,14 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `login` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
-  `idRole` int(10) unsigned NOT NULL,
+  `role_id` int(10) unsigned NOT NULL,
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- Дамп данных таблицы usersexample.user: 3 rows
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id`, `login`, `name`, `idRole`) VALUES
+INSERT INTO `user` (`id`, `login`, `name`, `role_id`) VALUES
 	(1, 'john', 'John Doe', 1),
 	(2, 'blackstar', 'Kevin Smith', 2),
 	(3, 'original', 'Tomas Hard', 3);
