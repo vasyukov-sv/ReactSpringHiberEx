@@ -3,29 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <title>React + Spring Boot Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://fb.me/react-15.0.1.js"></script>
+    <script src="https://fb.me/react-dom-15.0.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 <body>
 <div id='root'></div>
 
-<script src="https://fb.me/react-15.0.1.js"></script>
-<script src="https://fb.me/react-dom-15.0.1.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 
 <script type="text/babel">
-    let User = React.createClass({
-        render: function () {
-            return (<div>User</div>);
-        }
-    });
-    let UserTable = React.createClass({
-        render: function () {
-            return (<div>UserTable</div>);
+
+    let App = React.createClass({
+        loadUsers: function () {
+            let self = this;
+            $.ajax({
+                url: "http://localhost:8080/api/users"
+            }).then(function (data) {
+                self.setState({users: data._embedded.users});
+            });
+        },
+
+        getInitialState: function () {
+            return {users: []};
+        },
+
+        componentDidMount: function () {
+            this.loadUsers();
+        },
+
+        render() {
+            return ( <UserTable users={this.state.users}/> );
         }
     });
 
-    ReactDOM.render(
-            <UserTable/>, document.getElementById('root')
-    );
+    let User = React.createClass({
+        render: function () {
+            return (
+                    <tr>
+                        <td>{this.props.user.name}</td>
+                        <td>{this.props.user.login}</td>
+                    </tr>);
+        }
+    });
+
+    let UserTable = React.createClass({
+        render: function () {
+            let rows = [];
+            this.props.users.forEach(function (user) {
+                rows.push(<User user={user}/>);
+            });
+            return (
+                    <div className="container">
+                        <table className="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Login</th>
+                            </tr>
+                            </thead>
+                            <tbody>{rows}</tbody>
+                        </table>
+                    </div>)
+        }
+    });
+
+    ReactDOM.render(<App/>, document.getElementById('root'));
+
 </script>
 </body>
 </html>
