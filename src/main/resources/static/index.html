@@ -44,6 +44,7 @@
                     <tr>
                         <td>{this.props.user.name}</td>
                         <td>{this.props.user.login}</td>
+                        <td>{this.props.user.role.name}</td>
                     </tr>);
         }
     });
@@ -61,6 +62,7 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Login</th>
+                                <th>Role</th>
                             </tr>
                             </thead>
                             <tbody>{rows}</tbody>
