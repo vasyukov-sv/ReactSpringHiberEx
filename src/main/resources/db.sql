@@ -22,15 +22,6 @@ CREATE TABLE IF NOT EXISTS `role` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы usersexample.role: 3 rows
-DELETE FROM `role`;
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` (`id`, `name`) VALUES
-	(1, 'Admin'),
-	(2, 'User'),
-	(3, 'Audit');
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
-
 -- Дамп структуры для таблица usersexample.user
 CREATE TABLE IF NOT EXISTS `user` (
   `id` int(10) unsigned NOT NULL auto_increment,
@@ -40,15 +31,4 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Дамп данных таблицы usersexample.user: 3 rows
-DELETE FROM `user`;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` (`id`, `login`, `name`, `role_id`) VALUES
-	(1, 'john', 'John Doe', 1),
-	(2, 'blackstar', 'Kevin Smith', 2),
-	(3, 'original', 'Tomas Hard', 3);
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
-/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
-/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
